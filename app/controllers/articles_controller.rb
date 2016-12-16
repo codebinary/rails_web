@@ -1,16 +1,16 @@
 class ArticlesController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show]#Helpder que viene con devise
+    before_action :article_find, except: [:index, :new, :create]
+
 	#GET /articles
     def index
         #Obtiene todos los registros de la tabla article
     	@articles = Article.all
     end
-
+    
     #GET /articles/:id
     def show
-        #Encuentra un article por el id
-    	@article = Article.find(params[:id])
-        #Where
-        #Article.where.not("id = ?", params[:id])
+        @comment = Comment.new
     end
 
     #GET /articles/new
@@ -21,13 +21,12 @@ class ArticlesController < ApplicationController
 
     #GET /articles/:id
     def edit
-        @article = Article.find(params[:id])
+        
     end
 
     #PUT /articles/:id
     def update
         #@article.update_attributes({title: "Nuevo título"})
-        @article = Article.find(params[:id])
         if @article.update(article_atributes)
             redirect_to @article
         else
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
     
     #POST /articles
     def create
-        @article = Article.new(article_atributes)
+        @article = current_user.articles.new(article_atributes)
         #@article.invalid?
         if @article.save
             redirect_to @article
@@ -48,12 +47,16 @@ class ArticlesController < ApplicationController
 
   
     def destroy
-        @article = Article.find(params[:id])
+        
         @article.destroy #Elimina el objeto de la base de datos
         redirect_to articles_path
     end
 
     private
+
+    def article_find
+        @article = Article.find(params[:id])
+    end
     
     def article_atributes
         params.require(:article).permit(:title,:body)

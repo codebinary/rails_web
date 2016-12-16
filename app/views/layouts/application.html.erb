@@ -7,28 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<nav class="be-red white large-padding"> 
-			<ul class="row center-xs middle-xs">
-				<li class="col-md">
-					<h1 class="no-margin" id="logo">
-						Blog James
-					</h1>
-				</li>
-				<li class="col-md">
-					<%= link_to "Inicio", root_path %>
-				</li>
-				<li class="col-md">Diseño</li>
-				<li class="col-md">Programación</li>
-				<li class="col-md">Tecnología</li>
-				<% if user_signed_in? %>
-					<li class="col-md">
-						<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
-					</li>
-				<%end%>
-			</ul>
-		</nav>
-	</header>
+	<%= render "partials/navigation" %>
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

@@ -1,6 +1,13 @@
 <h1><%= @article.title %></h1>
+<% unless @article.user.nil? %> <!-- unless funciona como if not -->
+<p>Escrito por: <%= current_user.email %></p>
+<%end%>
 <div>
 	<%= @article.body %>
+</div>
+<div>
+	<h3>Comentaris</h3>
+	<%= render "comments/form" %>
 </div>
 <div>
 	<%= link_to "Editar", edit_article_path(@article) %>

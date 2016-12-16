@@ -1,1 +1,3 @@
-<h1>¡¡Bienvenido a nuestro blod!!</h1>
+<% if user_signed_in? %>
+    <h1>¡¡Bienvenido <%= current_user.email %>!!</h1>
+<%end%>
