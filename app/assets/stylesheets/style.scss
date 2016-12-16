@@ -1,0 +1,45 @@
+html, body{
+	margin: 0px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+a, a:visited{
+	color: inherit!important;
+	text-decoration: none;
+}
+
+#logo{
+	font-size: 1.2em;
+}
+.no-margin{
+	margin: 0px;
+}
+.be-red{
+	background-color: #00ACC1;
+}
+
+ul{
+	list-style: none;
+}
+
+.white{
+	color: #ECF0F1;
+}
+.large-padding{
+	padding: 17px 11px;
+}
+
+.field{
+	margin-top: 1em;
+}
+
+/* .form-control{
+	border: none;
+	border-bottom: 1px solid;
+	outline: none;
+	width: 100%;
+	display: block;
+	padding: 10px 0px;
+	font-size: 1.2em;
+
+} */
